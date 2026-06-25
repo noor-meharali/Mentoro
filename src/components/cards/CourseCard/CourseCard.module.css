@@ -1,0 +1,17 @@
+/* ── CourseCard — Premium Obsidian ───────────── */
+.card {
+  border-radius: var(--m-r-xl);
+  border: 1px solid var(--m-border);
+  background: var(--m-surface-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--m-shadow-sm);
+  overflow: hidden;
+  transition: all 240ms var(--m-ease);
+}
+
+.card:hover {
+  border-color: var(--m-border-accent);
+  box-shadow: var(--m-shadow-accent);
+  transform: translateY(-2px);
+}

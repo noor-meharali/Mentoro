@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentoro — Premium Learning Platform</title>
+    <meta name="description" content="Mentoro is a premium learning platform for educators and students. Deliver adaptive courses, manage student access, and track outcomes." />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mentoro — Premium Learning Platform" />
+    <meta property="og:description" content="Deliver adaptive courses, manage student access, and track outcomes with a secure platform designed for premium education." />
+    <meta property="og:site_name" content="Mentoro" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Mentoro — Premium Learning Platform" />
+    <meta name="twitter:description" content="Deliver adaptive courses, manage student access, and track outcomes." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+    <!-- Theme initialization — prevents flash of wrong theme on load -->
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('mentoro_theme');
+          if (t === 'light') {
+            document.documentElement.dataset.theme = 'light';
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

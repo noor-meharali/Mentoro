@@ -1,0 +1,166 @@
+/* ═══════════════════════════════════════════════
+   Sidebar — Premium Dark Glass Panel
+═══════════════════════════════════════════════ */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+  min-height: 0;
+  padding: 1.375rem;
+  background: var(--m-surface-strong);
+  border: 1px solid var(--m-border);
+  border-radius: var(--m-r-2xl);
+  box-shadow: var(--m-shadow-lg);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  position: sticky;
+  top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .sidebar { padding: 1.625rem; }
+}
+
+/* ── Brand header ───────────────────────────── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brandName {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--m-text-strong);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #c4a8ff 0%, #9b6dff 50%, #e8c76a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brandWorkspace {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--m-text-faint);
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+}
+
+/* ── Divider ─────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--m-accent-dim) 0%, var(--m-border) 100%);
+  margin: 1.25rem 0;
+}
+
+/* ── Nav section ────────────────────────────── */
+.nav {
+  flex: 1;
+}
+
+.navLabel {
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--m-text-faint);
+  margin: 0 0 0.625rem 0.625rem;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Nav item ───────────────────────────────── */
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.625rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--m-r-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--m-nav-text);
+  text-decoration: none;
+  transition: all var(--m-duration) var(--m-ease);
+  border: 1px solid transparent;
+  letter-spacing: 0.005em;
+}
+.navItem:hover {
+  color: var(--m-nav-text-active);
+  background: var(--m-surface-hover);
+  border-color: var(--m-border-accent);
+}
+
+/* Active state */
+.navItemActive {
+  color: var(--m-nav-text-active) !important;
+  background: var(--m-nav-bg-active) !important;
+  border-color: var(--m-border-accent) !important;
+  font-weight: 700;
+}
+.navItemActive .navIcon {
+  opacity: 1;
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.50;
+  transition: opacity var(--m-duration) var(--m-ease),
+              color var(--m-duration) var(--m-ease);
+  color: var(--m-nav-icon);
+}
+.navItem:hover .navIcon {
+  opacity: 0.85;
+}
+
+.navItemLabel {
+  line-height: 1;
+}
+
+/* ── Sidebar footer ─────────────────────────── */
+.sidebarFooter {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--m-border);
+}
+
+.footerBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  color: var(--m-text-faint);
+  letter-spacing: 0.05em;
+}
+
+.footerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--m-success);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.55);
+  animation: glowPulse 2s ease-in-out infinite;
+}

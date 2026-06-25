@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════════
+   Mentoro Premium — Animations & Transitions v2
+   No changes to animation logic/timing.
+   AUDIT: Added accessible reduced-motion skeletons,
+   fixed glowPulse to use updated accent value.
+═══════════════════════════════════════════════ */
+
+/* ── Entrance animations ─────────────────────── */
+.fade-in {
+  animation: fadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.slide-up {
+  animation: slideUp 0.60s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.40s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Stagger utilities ───────────────────────── */
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 110ms; }
+.stagger-3 { animation-delay: 170ms; }
+.stagger-4 { animation-delay: 230ms; }
+
+/* ── Keyframes ───────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* AUDIT: Updated accent value from #8b5cf6 to #a07aff */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(160, 122, 255, 0.30); }
+  50%       { box-shadow: 0 0 24px rgba(160, 122, 255, 0.58); }
+}
+
+@keyframes glowPulseGold {
+  0%, 100% { box-shadow: 0 0 10px rgba(237, 204, 114, 0.25); }
+  50%       { box-shadow: 0 0 22px rgba(237, 204, 114, 0.50); }
+}
+
+/* ── Skeleton loader ─────────────────────────── */
+/* AUDIT: Updated gradient stops to use updated --m-surface-hover */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--m-surface-hover) 25%,
+    rgba(160, 122, 255, 0.07) 50%,
+    var(--m-surface-hover) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: var(--m-r-md);
+  /* Ensure skeleton is visible in light mode */
+  min-height: 1rem;
+}
+
+/* Light mode skeleton — distinct enough against white bg */
+:root[data-theme='light'] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(109, 40, 217, 0.05) 25%,
+    rgba(109, 40, 217, 0.10) 50%,
+    rgba(109, 40, 217, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ── Spinner ─────────────────────────────────── */
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--m-border-strong);
+  border-top-color: var(--m-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Sidebar mobile slide ────────────────────── */
+@keyframes sidebarSlideIn {
+  from { transform: translateX(-100%); opacity: 0.7; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.sidebar-panel {
+  animation: sidebarSlideIn 0.30s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.overlay-bg {
+  animation: overlayFadeIn 0.25s ease both;
+}
+
+/* ── Hover lift ──────────────────────────────── */
+.hover-lift {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--m-shadow-lg);
+}
+
+/* ── Toast / notification pop ────────────────── */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0)    scale(1); }
+  to   { opacity: 0; transform: translateY(-8px) scale(0.96); }
+}
+
+.toast-enter { animation: toastIn  0.30s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.toast-exit  { animation: toastOut 0.22s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ── Modal entrance ──────────────────────────── */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+.modal-enter {
+  animation: modalIn 0.30s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Reduced motion overrides ────────────────── */
+/* Must respect user preference; defined here as catch-all */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .slide-up,
+  .slide-in-right,
+  .sidebar-panel,
+  .overlay-bg,
+  .toast-enter,
+  .toast-exit,
+  .modal-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .skeleton {
+    animation: none !important;
+    background: var(--m-surface-hover) !important;
+  }
+
+  .spinner {
+    animation: spin 1.5s linear infinite; /* keep spinner, just slower */
+  }
+}
